@@ -22,8 +22,8 @@ export interface AirportNavigationAPI {
 }
 
 export interface RelevantFlightParamsAPI {
-  skyId: string;
   entityId: string;
+  skyId: string;
   flightPlaceType: "AIRPORT" | "CITY";
   localizedName: string;
 }
@@ -35,7 +35,6 @@ export interface RelevantHotelParamsAPI {
 }
 
 export interface AirportAPI {
-  skyId: string;
   entityId: string;
   presentation: AirportPresentationAPI;
   navigation: AirportNavigationAPI;

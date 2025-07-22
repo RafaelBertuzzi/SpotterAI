@@ -2,7 +2,7 @@ import { Airport, AirportAPI } from "./airportTypes";
 
 function toAirport(airportApi: AirportAPI): Airport {
   return {
-    skyId: airportApi.skyId,
+    skyId: airportApi.navigation.relevantFlightParams.skyId,
     name: airportApi.navigation.relevantFlightParams.localizedName,
     city: extractCityFromSuggestionTitle(
       airportApi.presentation.suggestionTitle
