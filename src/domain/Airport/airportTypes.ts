@@ -1,5 +1,5 @@
 export interface Airport {
-  iata: string;
+  skyId: string;
   name: string;
   city: string;
   country: string;

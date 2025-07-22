@@ -33,13 +33,13 @@ export const AirportSearchInput = ({ value, onSelect, placeholder }: Props) => {
     setSearchQuery("");
   };
 
-  const displayValue = value ? `${value.name} (${value.iata})` : "";
+  const displayValue = value ? `${value.name} (${value.skyId})` : "";
 
   const formatAirportDisplay = (airport: Airport) => {
     if (airport.entityType === "CITY") {
       return `${airport.name} (Any)`;
     }
-    return `${airport.name} (${airport.iata})`;
+    return `${airport.name} (${airport.skyId})`;
   };
 
   const formatAirportSubtitle = (airport: Airport) => {
@@ -82,7 +82,7 @@ export const AirportSearchInput = ({ value, onSelect, placeholder }: Props) => {
             borderBottomWidth={1}
             borderBottomColor={Colors.gray_200}
           >
-            <Text variant="headingMedium" color="neutral_900">
+            <Text variant="headingMedium" color="gray_600">
               Search Airport
             </Text>
             <Pressable
@@ -123,7 +123,7 @@ export const AirportSearchInput = ({ value, onSelect, placeholder }: Props) => {
               >
                 <Box flex={1}>
                   <Row alignItems="center" gap={8}>
-                    <Text variant="paragraphMedium" color="neutral_900">
+                    <Text variant="paragraphMedium" color="gray_600">
                       {formatAirportDisplay(item)}
                     </Text>
                     {item.entityType === "AIRPORT" && (

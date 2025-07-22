@@ -15,7 +15,7 @@ export function AppTabBar({ state, navigation }: BottomTabBarProps) {
       paddingBottom={Platform.OS === "ios" ? bottom : bottom + 8}
       justifyContent="space-around"
       borderTopWidth={0.25}
-      borderTopColor={Colors.neutral_400}
+      borderTopColor={Colors.gray_300}
       paddingTop={12}
       backgroundColor="white"
     >
@@ -41,14 +41,14 @@ export function AppTabBar({ state, navigation }: BottomTabBarProps) {
           >
             <Column alignItems="center">
               <Ionicons
-                color={isFocused ? Colors.primary : Colors.neutral_250}
+                color={isFocused ? Colors.primary : Colors.gray_400}
                 size={24}
                 name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
               />
               <Text
                 semiBold
                 paddingTop={4}
-                color={isFocused ? "primary" : "neutral_250"}
+                color={isFocused ? "primary" : "gray_400"}
               >
                 {tabItem.label}
               </Text>

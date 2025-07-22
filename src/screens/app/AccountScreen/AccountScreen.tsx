@@ -15,7 +15,7 @@ export function AccountScreen() {
   return (
     <Screen>
       <Column flex={1} padding={24}>
-        <Text variant="headingLarge" color="neutral_900" marginBottom={32}>
+        <Text variant="headingLarge" color="gray_600" marginBottom={32}>
           Account
         </Text>
         {user && (
@@ -32,7 +32,7 @@ export function AccountScreen() {
                 color={Colors.gray_600}
               />
             )}
-            <Text variant="headingMedium" color="neutral_900" marginBottom={4}>
+            <Text variant="headingMedium" color="gray_600" marginBottom={4}>
               {user.firstName} {user.lastName}
             </Text>
             <Text variant="paragraphMedium" color="gray_600">
