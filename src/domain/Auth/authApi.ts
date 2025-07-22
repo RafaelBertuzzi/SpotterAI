@@ -29,7 +29,7 @@ async function signIn(request: SignInRequest): Promise<AuthCredentialsAPI> {
 }
 
 async function logout(): Promise<void> {
-  await new Promise((r) => setTimeout(r, 1000));
+  await new Promise((r) => setTimeout(r, 500));
 }
 
 export interface SignUpRequest {

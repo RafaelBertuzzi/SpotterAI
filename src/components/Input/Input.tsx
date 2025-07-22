@@ -22,6 +22,7 @@ export const Input = ({ value, onChangeText, placeholder, ...rest }: Props) => {
 
 const styles = StyleSheet.create({
   input: {
+    flex: 1,
     borderWidth: 1,
     borderColor: Colors.gray_300,
     borderRadius: 12,

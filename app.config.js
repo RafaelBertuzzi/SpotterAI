@@ -9,31 +9,32 @@ export default {
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
     ios: {
-      supportsTablet: true
+      supportsTablet: true,
     },
     android: {
       adaptiveIcon: {
         foregroundImage: "./assets/images/adaptive-icon.png",
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
       },
-      edgeToEdgeEnabled: true
     },
     plugins: [
+      "expo-font",
       [
         "expo-splash-screen",
         {
           image: "./assets/images/splash-icon.png",
           imageWidth: 200,
           resizeMode: "contain",
-          backgroundColor: "#ffffff"
-        }
-      ]
+          backgroundColor: "#ffffff",
+        },
+      ],
     ],
     experiments: {
-      typedRoutes: true
+      typedRoutes: true,
     },
     extra: {
       BASE_URL: process.env.BASE_URL,
+      RAPIDAPI_KEY: process.env.RAPIDAPI_KEY,
     },
-  }
+  },
 };
