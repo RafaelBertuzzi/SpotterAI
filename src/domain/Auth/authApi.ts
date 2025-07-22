@@ -40,8 +40,6 @@ export interface SignUpRequest {
 }
 
 async function signUp(request: SignUpRequest): Promise<AuthCredentialsAPI> {
-  console.log("signUp ~ request:", request);
-
   await new Promise((r) => setTimeout(r, 1000));
 
   return {
@@ -52,9 +50,9 @@ async function signUp(request: SignUpRequest): Promise<AuthCredentialsAPI> {
     },
     user: {
       id: "1",
-      email: "test@example.com",
-      first_name: "Test",
-      last_name: "User",
+      email: request.email,
+      first_name: request.firstName,
+      last_name: request.lastName,
       profile_picture: "",
     },
   };

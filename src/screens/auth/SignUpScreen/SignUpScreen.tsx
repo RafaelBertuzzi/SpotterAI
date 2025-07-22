@@ -11,9 +11,11 @@ import {
 } from "react-native";
 import { Center, Column, Text } from "~/components";
 import { useSignup } from "~/domain/Auth";
+import { useAuthNavigation } from "~/hooks/useAuthNavigation";
 import { Colors } from "~/theme/colors";
 
 export const SignUpScreen = () => {
+  const { back } = useAuthNavigation();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -39,6 +41,14 @@ export const SignUpScreen = () => {
         barStyle="dark-content"
       />
       <Column flex={1}>
+        {/* Back Button */}
+        <Pressable style={styles.backButton} onPress={back} hitSlop={8}>
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={28}
+            color={Colors.gray_700}
+          />
+        </Pressable>
         <Center flex={1} justifyContent="center" paddingHorizontal={24}>
           <Column gap={32} width="100%" maxWidth={400}>
             <Column gap={8} alignItems="center">
@@ -175,6 +185,15 @@ export const SignUpScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  backButton: {
+    position: "absolute",
+    top: 60,
+    left: 16,
+    zIndex: 20,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    borderRadius: 20,
+    padding: 4,
+  },
   closeButton: {
     position: "absolute",
     right: 24,
