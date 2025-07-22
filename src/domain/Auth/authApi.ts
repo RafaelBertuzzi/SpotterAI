@@ -23,7 +23,7 @@ async function signIn(request: SignInRequest): Promise<AuthCredentialsAPI> {
       email: "test@example.com",
       first_name: "Test",
       last_name: "User",
-      profile_picture: "https://via.placeholder.com/150",
+      profile_picture: "",
     },
   };
 }
