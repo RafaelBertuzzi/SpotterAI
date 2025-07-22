@@ -12,9 +12,9 @@ export interface AuthCredentialsAPI {
 }
 
 export interface ITokensAPI {
-  accessToken: string;
-  refreshToken: string;
-  expiresIn: number;
+  access_token: string;
+  refresh_token: string;
+  expires_in: number;
 }
 
 export interface ITokens {

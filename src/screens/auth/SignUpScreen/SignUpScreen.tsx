@@ -10,20 +10,20 @@ import {
   View,
 } from "react-native";
 import { Center, Column, Text } from "~/components";
-import { useLogin } from "~/domain/Auth";
-import { useAuthNavigation } from "~/hooks/useAuthNavigation";
+import { useSignup } from "~/domain/Auth";
 import { Colors } from "~/theme/colors";
 
-export const LoginScreen = () => {
+export const SignUpScreen = () => {
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const isDisabled = !email || !password;
-  const { login, isLoading, isError } = useLogin();
-  const { toSignUp } = useAuthNavigation();
+  const isDisabled = !email || !password || !firstName || !lastName;
+  const { signup, isLoading, isError } = useSignup();
 
-  const handleLogin = async () => {
-    login({ email, password });
+  const handleSignup = async () => {
+    signup({ email, firstName, lastName, password });
   };
 
   return (
@@ -48,18 +48,50 @@ export const LoginScreen = () => {
                 textAlign="center"
                 semiBold
               >
-                Sign In
+                Sign Up
               </Text>
               <Text
                 variant="paragraphMedium"
                 color="gray_500"
                 textAlign="center"
               >
-                Access your account to continue
+                Create your account to get started
               </Text>
             </Column>
 
             <Column gap={20}>
+              <Column gap={8}>
+                <Text variant="paragraphMedium" color="gray_700" semiBold>
+                  First Name
+                </Text>
+                <TextInput
+                  style={styles.input}
+                  value={firstName}
+                  onChangeText={setFirstName}
+                  placeholder="Enter your first name"
+                  placeholderTextColor={Colors.gray_400}
+                  autoCapitalize="words"
+                  autoComplete="name"
+                  autoCorrect={false}
+                />
+              </Column>
+
+              <Column gap={8}>
+                <Text variant="paragraphMedium" color="gray_700" semiBold>
+                  Last Name
+                </Text>
+                <TextInput
+                  style={styles.input}
+                  value={lastName}
+                  onChangeText={setLastName}
+                  placeholder="Enter your last name"
+                  placeholderTextColor={Colors.gray_400}
+                  autoCapitalize="words"
+                  autoComplete="name-family"
+                  autoCorrect={false}
+                />
+              </Column>
+
               <Column gap={8}>
                 <Text variant="paragraphMedium" color="gray_700" semiBold>
                   Email
@@ -112,7 +144,7 @@ export const LoginScreen = () => {
                   color="error_500"
                   textAlign="center"
                 >
-                  Invalid email or password
+                  Failed to sign up. Please check your details.
                 </Text>
               )}
 
@@ -121,7 +153,7 @@ export const LoginScreen = () => {
                   styles.loginButton,
                   { opacity: isDisabled || isLoading ? 0.5 : 1 },
                 ]}
-                onPress={handleLogin}
+                onPress={handleSignup}
                 activeOpacity={0.8}
                 disabled={isDisabled}
               >
@@ -131,33 +163,9 @@ export const LoginScreen = () => {
                   semiBold
                   textAlign="center"
                 >
-                  {isLoading ? "Signing in..." : "Sign In"}
+                  {isLoading ? "Signing up..." : "Sign Up"}
                 </Text>
               </TouchableOpacity>
-            </Column>
-
-            <Column gap={16} alignItems="center">
-              <Pressable onPress={() => {}} hitSlop={8}>
-                <Text
-                  variant="paragraphSmall"
-                  color="primary"
-                  textAlign="center"
-                  semiBold
-                >
-                  Forgot your password?
-                </Text>
-              </Pressable>
-
-              <View style={styles.signupContainer}>
-                <Text variant="paragraphSmall" color="gray_500">
-                  Don&apos;t have an account?{" "}
-                </Text>
-                <Pressable onPress={toSignUp} hitSlop={8}>
-                  <Text variant="paragraphSmall" color="primary" semiBold>
-                    Sign Up
-                  </Text>
-                </Pressable>
-              </View>
             </Column>
           </Column>
         </Center>

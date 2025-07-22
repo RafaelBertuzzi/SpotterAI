@@ -14,9 +14,9 @@ async function signIn(request: SignInRequest): Promise<AuthCredentialsAPI> {
 
   return {
     tokens: {
-      accessToken: "accessToken",
-      refreshToken: "refreshToken",
-      expiresIn: 1000,
+      access_token: "accessToken",
+      refresh_token: "refreshToken",
+      expires_in: 1000,
     },
     user: {
       id: "1",
@@ -32,7 +32,36 @@ async function logout(): Promise<void> {
   await new Promise((r) => setTimeout(r, 1000));
 }
 
+export interface SignUpRequest {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}
+
+async function signUp(request: SignUpRequest): Promise<AuthCredentialsAPI> {
+  console.log("signUp ~ request:", request);
+
+  await new Promise((r) => setTimeout(r, 1000));
+
+  return {
+    tokens: {
+      access_token: "accessToken",
+      refresh_token: "refreshToken",
+      expires_in: 1000,
+    },
+    user: {
+      id: "1",
+      email: "test@example.com",
+      first_name: "Test",
+      last_name: "User",
+      profile_picture: "",
+    },
+  };
+}
+
 export const authApi = {
   signIn,
   logout,
+  signUp,
 };
