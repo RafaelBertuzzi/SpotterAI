@@ -1,50 +1,81 @@
-# Welcome to your Expo app 👋
+# SpotterAI ✈️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native flight search app built with Expo, featuring a clean architecture and modern UI.
 
-## Get started
+## Features
+
+- 🔍 Flight search with flexible dates
+- 🏢 Airport search with autocomplete
+- 🔐 User authentication (login/signup)
+- 📱 Cross-platform (iOS & Android)
+
+## Getting Started
 
 1. Install dependencies
-
    ```bash
    npm install
    ```
 
 2. Start the app
-
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+├── api/                    # API configuration and setup
+├── components/             # Reusable UI components
+│   ├── AirportSearchInput/ # Airport search with autocomplete
+│   ├── Box/               # Layout components (Row, Column, Center)
+│   ├── DatePicker/        # Date selection component
+│   ├── FlightSearch/      # Flight search related components
+│   ├── Input/             # Text input components
+│   └── Screen/            # Screen wrapper component
+├── domain/                # Business logic
+│   ├── Airport/           # Airport search domain
+│   ├── Auth/              # Authentication domain
+│   ├── Flights/           # Flight search domain
+│   └── User/              # User management domain
+├── hooks/                 # Custom React hooks
+├── routes/                # Navigation setup
+├── screens/               # App screens
+│   ├── app/               # Main app screens (flights, account)
+│   └── auth/              # Authentication screens (login, signup)
+├── services/              # External services and storage
+├── theme/                 # Design system (colors, typography)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Domain Layer
 
-## Learn more
+Each domain follows Clean Architecture principles:
+- **Types**: TypeScript interfaces and types
+- **API**: External API communication
+- **Adapter**: Data transformation between API and app
+- **Service**: Business logic and domain rules
+- **Use Cases**: Specific application actions
+- **Hooks**: React integration for domain logic
 
-To learn more about developing your project with Expo, look at the following resources:
+### Key Components
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **FlightSearch**: Complete flight search flow with date and airport selection
+- **AirportSearchInput**: Autocomplete search for airports
+- **Navigation**: Stack and tab navigation with authentication flow
+- **Storage**: Secure credential storage and app state management
 
-## Join the community
+## Architecture
 
-Join our community of developers creating universal apps.
+The app uses a domain-driven design with clean architecture principles:
+- Separation of concerns between UI, business logic, and data
+- Dependency inversion with adapters
+- Reusable components and custom hooks
+- Type-safe development with TypeScript
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Tech Stack
+
+- **React Native** with Expo
+- **TypeScript** for type safety
+- **React Navigation** for routing
+- **AsyncStorage** for local data persistence
+- **Zustand** for state management
